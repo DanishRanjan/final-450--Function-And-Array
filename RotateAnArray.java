@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class ReverseAnArray{
+public class RotateAnArray{
   public static void display(int[] a){
     StringBuilder sb = new StringBuilder();
 
@@ -10,19 +10,27 @@ public class ReverseAnArray{
     }
     System.out.println(sb);
   }
-  public static void swap(int[] arr, int i, int j){
-      int temp = arr[i];
+  
+  public static void reverse(int[] arr,int i, int j){
+    while(i<=j){
+        int temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
-  }
-  public static void reverse(int[] a){
-    int i=0;
-    int j = a.length-1;
-    while(i<=j){
-        swap(a,i,j);
         i++;
         j--;
     }
+  }
+  public static void rotate(int[] a, int k){
+     k = k%a.length;
+     if(k<0){
+         k = k+a.length;
+     }
+         reverse(a,0,a.length-k-1);
+         
+         reverse(a,a.length-k,a.length-1);
+         
+         reverse(a,0,a.length-1);
+     
   }
 
 public static void main(String[] args) throws Exception {
@@ -33,8 +41,9 @@ public static void main(String[] args) throws Exception {
     for(int i = 0; i < n; i++){
        a[i] = Integer.parseInt(br.readLine());
     }
+    int k = Integer.parseInt(br.readLine());
 
-    reverse(a);
+    rotate(a, k);
     display(a);
  }
 
