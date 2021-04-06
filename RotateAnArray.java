@@ -14,8 +14,8 @@ public class RotateAnArray{
   public static void reverse(int[] arr,int i, int j){
     while(i<=j){
         int temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
+        arr[i] = arr[j];
+        arr[j] = temp;
         i++;
         j--;
     }
